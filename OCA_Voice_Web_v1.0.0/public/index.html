@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="无需安装应用的一对一网页语音通话">
+  <title>OCA Voice</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="logo">O</div>
+      <div>
+        <p class="eyebrow">PRIVATE WEB VOICE</p>
+        <h1>OCA Voice</h1>
+        <p class="intro">创建房间、复制邀请链接，双方允许麦克风后即可通话。</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <div>
+          <p class="eyebrow">当前状态</p>
+          <h2 id="callTitle">准备加入</h2>
+        </div>
+        <span id="statusBadge" class="badge" data-state="idle">未连接</span>
+      </div>
+
+      <label for="roomInput">房间码</label>
+      <div class="room-row">
+        <input id="roomInput" maxlength="32" autocomplete="off" placeholder="例如 SUNNY88">
+        <button id="randomRoomButton" class="secondary">随机生成</button>
+      </div>
+      <p class="hint">房间最多两人，仅允许英文、数字、短横线和下划线。</p>
+
+      <div class="action-row">
+        <button id="joinButton" class="primary">加入通话</button>
+        <button id="copyLinkButton" class="secondary">复制邀请链接</button>
+      </div>
+
+      <div class="controls">
+        <button id="muteButton" class="control" disabled>🎙 <span id="muteButtonText">麦克风已开</span></button>
+        <button id="hangupButton" class="control danger" disabled>☎ 挂断</button>
+      </div>
+
+      <div class="people">
+        <article class="person">
+          <div class="avatar">我</div>
+          <div><strong>你的麦克风</strong><span id="localState">尚未启用</span></div>
+        </article>
+        <article class="person">
+          <div class="avatar friend">友</div>
+          <div><strong>通话伙伴</strong><span id="remoteState">等待加入</span></div>
+        </article>
+      </div>
+
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="notice">
+      <h2>说明</h2>
+      <p>不录音。当前版本只使用 STUN，不使用 TURN；部分校园网、公司网或严格移动网络可能无法接通。</p>
+    </section>
+  </main>
+
+  <audio id="remoteAudio" autoplay playsinline></audio>
+  <script src="/app.js" defer></script>
+</body>
+</html>
